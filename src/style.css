@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: rgb(120, 190, 211);
+  --light-color: rgb(255, 255, 255);
+  --grey-color: rgb(47, 47, 47);
+  --dark-grey-color: rgb(148, 148, 148);
+  --dark-color: rgb(34, 34, 34);
+}
+
+/* raleway-700 - latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/raleway-v28-latin-700.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/raleway-v28-latin-700.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-700.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-700.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-700.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-700.svg#Raleway') format('svg');
+  /* Legacy iOS */
+}
+
+/* raleway-900 - latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/raleway-v28-latin-900.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/raleway-v28-latin-900.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/raleway-v28-latin-900.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/raleway-v28-latin-900.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/raleway-v28-latin-900.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/raleway-v28-latin-900.svg#Raleway') format('svg');
+  /* Legacy iOS */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  background-color: #f1f1f1;
+  font-family: Raleway, Roboto, sans-serif;
+}
+
+.tonic {
+  background-color: rgba(99, 219, 62, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.supertonic {
+  background-color: rgba(245, 242, 91, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.mediant {
+  background-color: rgba(56, 96, 228, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.subdominant {
+  background-color: rgba(209, 127, 216, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.dominant {
+  background-color: rgb(248, 37, 37, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.submediant {
+  background-color: rgba(36, 184, 176, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.leading {
+  background-color: rgba(241, 149, 62, 0.8) !important;
+  color: var(--light-color) !important;
+}
+
+.fretboard {
+  width: 800px;
+  margin: 2rem auto;
+}
+
+.actual-fretboard {
+  margin-top: 2.1rem;
+}
+
+.string {
+  display: flex;
+  flex-direction: row;
+  min-height: 2.1rem;
+}
+
+.fret {
+  width: 100%;
+  font-weight: 700;
+  border: 0.18rem solid rgb(138, 137, 137);
+  border-bottom: hidden;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.zero {
+  border-left: hidden;
+  border-right: hidden;
+  border-right: 0.4rem solid rgb(105, 105, 105);
+  width: 50%;
+}
+
+.first {
+  border-left: hidden;
+}
+
+.last {
+  border-right: hidden;
+  width: 50%;
+}
+
+.last-string {
+  border-right: hidden;
+  border-left: hidden;
+}
+
+.note {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: -55%;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.7rem;
+  background-color: rgb(65, 64, 64);
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.note-label {
+  text-align: center;
+}
+
+.fretboard-selectors {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.select-note,
+.select-scale {
+  cursor: pointer;
+  color: white;
+  background-color: var(--grey-color);
+  padding: 5px;
+  border: hidden;
+  display: block;
+  min-width: 64px;
+}
+
+.select-note:focus,
+.select-scale:focus {
+  outline: none;
+}
+
+.degrees-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 95%;
+  margin: auto;
+}
+
+.degree {
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem 0;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  -webkit-box-shadow: 3px 3px 9px -3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 3px 3px 9px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 9px -3px rgba(0, 0, 0, 0.2);
+  background-color: var(--grey-color);
+  color: var(--light-color);
+  border: none;
+}
+
+.nav {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 50rem;
+  margin-inline: auto;
+  color: var(--grey-color);
+}
+
+.logo {
+  color: var(--grey-color);
+  font-size: 2.3rem;
+  font-family: Raleway;
+  font-weight: 900;
+  text-transform: uppercase;
+}
