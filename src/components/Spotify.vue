@@ -1,7 +1,13 @@
 <template>
     <div class="spotify">
+        <button @click="this.toggleSpotify()" class="py-4 px-5 text-neutral-100">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+            </svg>
+        </button>
         <div class="spotify-search">
-            <input v-model="input" class="spotify-search-input" placeholder="Search songs...">
+            <input v-model="input" class="spotify-search-input font-normal text-sm" placeholder="Search songs...">
             <button class="spotify-search-btn" @click="searchTrack()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     class="search">
@@ -23,7 +29,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 
 export default {
     name: 'Spotify',
@@ -38,6 +44,7 @@ export default {
     },
     methods: {
         ...mapActions(["getAccessToken"]),
+        ...mapMutations(["toggleSpotify"]),
         async searchTrack() {
             if(this.input.length > 0) {
                 const accessToken = await this.getAccessToken();
@@ -72,8 +79,8 @@ export default {
 <style>
 .spotify {
     background-color: var(--dark-color);
-    width: 18rem;
-    position: absolute;
+    width: 24rem;
+    position: fixed;
     top: 0;
     right: 0;
     display: flex;
@@ -82,7 +89,8 @@ export default {
 }
 
 .spotify-search {
-    padding: 1.5rem;
+    padding-inline: 1.5rem;
+    padding-bottom: 1.5rem;
     display: flex;
     align-items: center;
     position: relative;

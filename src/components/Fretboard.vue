@@ -39,7 +39,6 @@
             </button>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -213,17 +212,10 @@ export default {
     },
     mounted() {
         this.createScale();
+        this.setFretsByWidth();
 
         window.onresize = () => {
-            if (window.innerWidth < 640) {
-                this.frets = 8;
-            } else if (window.innerWidth < 768) {
-                this.frets = 10;
-            } else if (window.innerWidth < 1024) {
-                this.frets = 14;
-            } else {
-                this.frets = 17;
-            }
+            this.setFretsByWidth();
         }
     },
     methods: {
@@ -236,7 +228,17 @@ export default {
 
             this.defaultLayout();
         },
-
+        setFretsByWidth() {
+            if (window.innerWidth < 640) {
+                this.frets = 8;
+            } else if (window.innerWidth < 768) {
+                this.frets = 10;
+            } else if (window.innerWidth < 1024) {
+                this.frets = 14;
+            } else {
+                this.frets = 17;
+            }
+        },
         /* Returns the corresponding note to the specified string and fret */
         getNote(string, fret) {
             var result = this.stringNotes[string] + fret;
