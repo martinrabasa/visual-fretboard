@@ -1,27 +1,31 @@
 <template>
-    <div class="spotify">
-        <button @click="this.toggleSpotify()" class="py-4 px-5 text-neutral-100">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
-            </svg>
-        </button>
-        <div class="spotify-search">
-            <input v-model="input" class="spotify-search-input font-normal text-sm" placeholder="Search songs...">
-            <button class="spotify-search-btn" @click="searchTrack()">
+    <div class="fixed top-0 right-0">
+        <div class="flex items-center">
+            <button @click="this.toggleSpotify()" class="py-4 px-1 text-neutral-100 bg-neutral-900 rounded-tl rounded-bl">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    class="search">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
                 </svg>
             </button>
-        </div>
-        <div class="tracks">
-            <div v-for="t in this.$store.state.tracks" class="track" :key="t.id" @click="getTrack(t.id)">
-                <img class="track-img" :src="t.album.images[2].url" alt="">
-                <div class="track-data">
-                    <p class="track-name">{{ t.name }}</p>
-                    <p class="track-artist">{{ t.artists[0].name }} - {{ t.album.name }}</p>
+            <div class="bg-neutral-900 h-screen">
+                <div class="spotify-search">
+                    <input v-model="input" class="spotify-search-input font-normal text-sm" placeholder="Search songs...">
+                    <button class="spotify-search-btn" @click="searchTrack()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="search">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="tracks">
+                    <div v-for="t in this.$store.state.tracks" class="track bg-neutral-900" :key="t.id" @click="getTrack(t.id)">
+                        <img class="track-img" :src="t.album.images[2].url" alt="">
+                        <div class="track-data">
+                            <p class="track-name">{{ t.name }}</p>
+                            <p class="track-artist">{{ t.artists[0].name }} - {{ t.album.name }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,8 +93,7 @@ export default {
 }
 
 .spotify-search {
-    padding-inline: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
     position: relative;
@@ -111,7 +114,7 @@ export default {
 .spotify-search-btn {
     position: absolute;
     right: 0;
-    margin-right: 1.9rem;
+    margin-right: 2.3rem;
     color: var(--grey-color);
     border: none;
     background-color: transparent;
@@ -134,7 +137,6 @@ export default {
 
 .track {
     height: 5rem;
-    background-color: var(--dark-color);
     display: flex;
     flex-direction: row;
     align-items: center;
