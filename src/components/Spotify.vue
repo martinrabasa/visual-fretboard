@@ -7,7 +7,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
                 </svg>
             </button>
-            <div class="bg-neutral-900 h-screen">
+            <div class="bg-neutral-900 h-screen max-w-xs md:max-w-md">
                 <div class="spotify-search">
                     <input v-model="input" class="spotify-search-input font-normal text-sm" placeholder="Search songs...">
                     <button class="spotify-search-btn" @click="searchTrack()">
