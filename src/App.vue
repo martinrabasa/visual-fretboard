@@ -38,7 +38,7 @@ import {
 
 export default {
   components: {
-    Fretboard, Metronome, Spotify
+    Fretboard, Metronome, Spotify, Dialog, DialogPanel
   },
   data() {
     return {
@@ -53,7 +53,7 @@ export default {
     ...mapActions(["getAccessToken"]),
     ...mapMutations(["toggleSpotify"]),
     async defaultPlaylist() {
-      if(!this.$store.state.tracks) {
+      if (!this.$store.state.tracks) {
         const accessToken = await this.getAccessToken();
         const playlist = "37i9dQZF1DWXRqgorJj26U"; // Rock classics
 

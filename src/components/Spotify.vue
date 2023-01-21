@@ -1,25 +1,29 @@
 <template>
     <div class="fixed top-0 right-0">
         <div class="flex items-center">
-            <button @click="this.toggleSpotify()" class="py-4 px-1 text-neutral-100 bg-neutral-900 rounded-tl rounded-bl">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+            <button @click="this.toggleSpotify()"
+                class="py-4 px-1 text-neutral-100 bg-neutral-900 rounded-tl rounded-bl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
                 </svg>
             </button>
             <div class="bg-neutral-900 h-screen max-w-xs md:max-w-md">
                 <div class="spotify-search">
-                    <input v-model="input" class="spotify-search-input font-normal text-sm" placeholder="Search songs...">
+                    <input v-model="input" class="spotify-search-input font-normal text-sm"
+                        placeholder="Search songs...">
                     <button class="spotify-search-btn" @click="searchTrack()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            class="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="search">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
                     </button>
                 </div>
                 <div class="tracks">
-                    <div v-for="t in this.$store.state.tracks" class="track bg-neutral-900" :key="t.id" @click="getTrack(t.id)">
+                    <div v-for="t in this.$store.state.tracks" class="track bg-neutral-900" :key="t.id"
+                        @click="getTrack(t.id)">
                         <img class="track-img" :src="t.album.images[2].url" alt="">
                         <div class="track-data">
                             <p class="track-name">{{ t.name }}</p>
@@ -34,7 +38,6 @@
 
 <script>
 import { mapActions, mapMutations } from "vuex";
-
 export default {
     name: 'Spotify',
     props: {
@@ -50,21 +53,22 @@ export default {
         ...mapActions(["getAccessToken"]),
         ...mapMutations(["toggleSpotify"]),
         async searchTrack() {
-            if(this.input.length > 0) {
+            if (this.input.length > 0) {
                 const accessToken = await this.getAccessToken();
                 await fetch(`https://api.spotify.com/v1/search?q=${this.input}&type=track&limit=50`, {
                     headers: {
                         "Authorization": "Bearer " + accessToken.access_token,
                         "Accept": "application/json",
                         "Content-Type": "application/json"
-                    }})
+                    }
+                })
                     .then(res => res.json())
                     .then(data => this.$store.state.tracks = data.tracks.items);
             }
         },
         async getTrack(id) {
             const accessToken = await this.getAccessToken();
-            
+
             await fetch(`https://api.spotify.com/v1/audio-features/${id}`, {
                 headers: {
                     "Authorization": "Bearer " + accessToken.access_token,
