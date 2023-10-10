@@ -1,15 +1,3 @@
-<br />
-<div align="center">
-
-  <h1 align="center">Visual Fretboard</h1>
-
-  <div align="center">
-    An application to visualize notes, chords and scales on the guitar fretboard.
-    <br />
-    <a href="https://visual-fretboard.netlify.app">View Demo</a>
-  </div>
-</div>
-
 # Visual Fretboard 
 An application to visualize notes, chords and scales on the guitar fretboard. 
 
