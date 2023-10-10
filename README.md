@@ -10,8 +10,14 @@ https://visual-fretboard.netlify.app
 
 ## ⚙️ Running The Project
 1. Clone the repository
-`git clone https://github.com/martinrabasa/visual-fretboard.git`
+```
+git clone https://github.com/martinrabasa/visual-fretboard.git
+```
 2. Install NPM packages
-`npm install`
+```
+npm install
+```
 3. Run the app
-`npm run dev`
+```
+npm run dev
+```
