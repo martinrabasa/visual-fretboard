@@ -8,16 +8,26 @@ https://visual-fretboard.netlify.app
 - Metronome
 - Fetch data from your favorite songs on spotify.
 
-## ⚙️ Running The Project
+## ⚙️ Installation
 1. Clone the repository
 ```
 git clone https://github.com/martinrabasa/visual-fretboard.git
 ```
-2. Install NPM packages
+2. Change directory
+```
+cd visual-fretboard
+```
+3. Install dependencies
 ```
 npm install
 ```
-3. Run the app
+4. Run the app
 ```
 npm run dev
 ```
+
+## 🔧 Technologies
+- Vue
+- Vite
+- Tailwind CSS
+- Spotify API
