@@ -1,7 +1,17 @@
-# Vue 3 + Vite
+# Visual Fretboard 
+An application to visualize notes, chords and scales on the guitar fretboard. 
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+https://visual-fretboard.netlify.app
+ 
+## 🚀 Features
+- Interactive fretboard
+- Metronome
+- Fetch data from your favorite songs on spotify.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## ⚙️ Running The Project
+1. Clone the repository
+`git clone https://github.com/martinrabasa/visual-fretboard.git`
+2. Install NPM packages
+`npm install`
+3. Run the app
+`npm run dev`
