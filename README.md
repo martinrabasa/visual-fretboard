@@ -6,7 +6,7 @@ https://visual-fretboard.netlify.app
 ## 🚀 Features
 - Interactive fretboard
 - Metronome
-- Fetch data from your favorite songs on spotify.
+- Fetch data from your favorite songs on spotify
 
 ## ⚙️ Installation
 1. Clone the repository
