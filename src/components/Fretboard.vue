@@ -4,7 +4,7 @@
             <select v-model="this.$store.state.key"
                 class="rounded py-1.5 px-2 bg-neutral-800 text-neutral-100 text-sm cursor-pointer md:text-base" @change="createScale()">
                 <option selected disabled hidden value="null">Note</option>
-                <option v-for="note, noteIndex in notes" :key="note" :value="noteIndex">
+                <option v-for="note, noteIndex in data.notes" :key="note" :value="noteIndex">
                     {{ note.name }}
                 </option>
             </select>
@@ -12,19 +12,19 @@
             <select v-model="this.$store.state.mode"
                 class="rounded py-1.5 px-2 bg-neutral-800 text-neutral-100 text-sm cursor-pointer md:text-base" @change="createScale()">
                 <option selected disabled hidden value="null">Scale</option>
-                <option v-for="scale, scaleIndex in scales" :key="scale" :value="scaleIndex">
+                <option v-for="scale, scaleIndex in data.scales" :key="scale" :value="scaleIndex">
                     {{ scale.name }}
                 </option>
             </select>
         </div>
 
         <div class="my-10">
-            <div class="flex h-9" v-for="string, stringIndex in strings" :key="string">
-                <div v-for="fret, fretIndex in frets" :key="fret" :class="getFretClass(string, fretIndex)">
-                    <div :class="notes[getNote(stringIndex, fretIndex)].class"
+            <div class="flex h-9" v-for="string, stringIndex in data.strings" :key="string">
+                <div v-for="fret, fretIndex in data.frets" :key="fret" :class="getFretClass(string, fretIndex)">
+                    <div :class="data.notes[getNote(stringIndex, fretIndex)].class"
                         :style="{ visibility: scale.notes != null && scale.notes.includes(getNote(stringIndex, fretIndex)) ? 'visible' : 'hidden' }">
-                        <p class="note-label" v-show="notes[getNote(stringIndex, fretIndex)].visible">
-                            {{ notes[getNote(stringIndex, fretIndex)].name }}
+                        <p class="note-label" v-show="data.notes[getNote(stringIndex, fretIndex)].visible">
+                            {{ data.notes[getNote(stringIndex, fretIndex)].name }}
                         </p>
                     </div>
                 </div>
@@ -42,163 +42,20 @@
 </template>
 
 <script>
+import data from '../data.json'
 export default {
     name: 'Fretboard',
     data() {
         return {
-            scales: [
-                {
-                    name: "Major",
-                    pattern: [2, 2, 1, 2, 2, 2]
-                },
-                {
-                    name: "Dorian",
-                    pattern: [2, 1, 2, 2, 2, 1]
-                },
-                {
-                    name: "Prygian",
-                    pattern: [1, 2, 2, 2, 1, 2]
-                },
-                {
-                    name: "Lydian",
-                    pattern: [2, 2, 2, 1, 2, 2],
-                },
-                {
-                    name: "Mixolydian",
-                    pattern: [2, 2, 1, 2, 2, 1],
-                },
-                {
-                    name: "Minor",
-                    pattern: [2, 1, 2, 2, 1, 2],
-                },
-                {
-                    name: "Locrian",
-                    pattern: [1, 2, 2, 1, 2, 2]
-                }
-            ],
-            notes: [
-                {
-                    name: "C",
-                    class: "note C",
-                    visible: false
-                },
-                {
-                    name: "C♯",
-                    class: "note C♯",
-                    visible: false
-                },
-                {
-                    name: "D",
-                    class: "note D",
-                    visible: false
-                },
-                {
-                    name: "D♯",
-                    class: "note D♯",
-                    visible: false
-                },
-                {
-                    name: "E",
-                    class: "note E",
-                    visible: false
-                },
-                {
-                    name: "F",
-                    class: "note F",
-                    visible: false
-                },
-                {
-                    name: "F♯",
-                    class: "note F♯",
-                    visible: false
-                },
-                {
-                    name: "G",
-                    class: "note G",
-                    visible: false
-                },
-                {
-                    name: "G♯",
-                    class: "note G♯",
-                    visible: false
-                },
-                {
-                    name: "A",
-                    class: "note A",
-                    visible: false
-                },
-                {
-                    name: "A♯",
-                    class: "note A♯",
-                    visible: false
-                },
-                {
-                    name: "B",
-                    class: "note B",
-                    visible: false
-                }
-            ],
-            frets: 17,
-            strings: 6,
-            stringNotes: [4, 11, 7, 2, 9, 4],
-
+            data: data,
+            
             /* USER SCALE */
             scale: {
                 name: this.$store.state.mode,
                 key: this.$store.state.key,
                 pattern: null,
                 notes: null,
-                degrees: [
-                    {
-                        id: 0,
-                        symbol: "I",
-                        name: "Tonic",
-                        note: null,
-                        class: "degree"
-                    },
-                    {
-                        id: 1,
-                        symbol: "II",
-                        name: "Supertonic",
-                        note: null,
-                        class: "degree"
-                    },
-                    {
-                        id: 2,
-                        symbol: "III",
-                        name: "Mediant",
-                        note: null,
-                        class: "degree"
-                    },
-                    {
-                        id: 3,
-                        symbol: "IV",
-                        name: "Subdominant",
-                        note: null,
-                        class: "degree"
-                    },
-                    {
-                        id: 4,
-                        symbol: "V",
-                        name: "Dominant",
-                        note: null,
-                        class: "degree"
-                    },
-                    {
-                        id: 5,
-                        symbol: "VI",
-                        name: "Submediant",
-                        note: null,
-                        class: "degree"
-                    },
-                    {
-                        id: 6,
-                        symbol: "VII",
-                        name: "Leading",
-                        note: null,
-                        class: "degree"
-                    }
-                ],
+                degrees: data.degrees,
             },
         }
     },
@@ -221,7 +78,7 @@ export default {
     methods: {
         createScale() {
             if (this.$store.state.key != null && this.$store.state.mode != null) {
-                this.scale.pattern = this.scales[this.$store.state.mode].pattern;
+                this.scale.pattern = this.data.scales[this.$store.state.mode].pattern;
                 this.scale.notes = this.getNotes();
                 this.scale.chords = this.getChords();
             }
@@ -230,18 +87,18 @@ export default {
         },
         setFretsByWidth() {
             if (window.innerWidth < 640) {
-                this.frets = 8;
+                this.data.frets = 8;
             } else if (window.innerWidth < 768) {
-                this.frets = 10;
+                this.data.frets = 10;
             } else if (window.innerWidth < 1024) {
-                this.frets = 14;
+                this.data.frets = 14;
             } else {
-                this.frets = 17;
+                this.data.frets = 17;
             }
         },
         /* Returns the corresponding note to the specified string and fret */
         getNote(string, fret) {
-            var result = this.stringNotes[string] + fret;
+            var result = this.data.stringNotes[string] + fret;
 
             if (result > 23) {
                 result -= 24;
@@ -289,16 +146,16 @@ export default {
                 var secondThird = this.thirdDetector(chord[1], chord[2]);
 
                 if (firstThird == "minor" && secondThird == "minor") {
-                    this.scale.degrees[i].note = (this.notes[chord[0]].name + "dim");
+                    this.scale.degrees[i].note = (this.data.notes[chord[0]].name + "dim");
                 }
                 else if (firstThird == "minor" && secondThird == "major") {
-                    this.scale.degrees[i].note = (this.notes[chord[0]].name.toLowerCase());
+                    this.scale.degrees[i].note = (this.data.notes[chord[0]].name.toLowerCase());
                 }
                 else if (firstThird == "major" && secondThird == "minor") {
-                    this.scale.degrees[i].note = (this.notes[chord[0]].name);
+                    this.scale.degrees[i].note = (this.data.notes[chord[0]].name);
                 }
                 else if (firstThird == "major" && secondThird == "major") {
-                    this.scale.degrees[i].note = (this.notes[chord[0]].name + "aug");
+                    this.scale.degrees[i].note = (this.data.notes[chord[0]].name + "aug");
                 }
             }
 
@@ -328,13 +185,13 @@ export default {
 
             var fNote = this.scale.notes[index];
 
-            if (this.notes[fNote].class.includes(this.scale.degrees[index].name.toLowerCase())) {
-                this.notes[fNote].class = "note " + this.scale.notes[index].name;
-                this.notes[fNote].visible = false;
+            if (this.data.notes[fNote].class.includes(this.scale.degrees[index].name.toLowerCase())) {
+                this.data.notes[fNote].class = "note " + this.scale.notes[index].name;
+                this.data.notes[fNote].visible = false;
             }
             else {
-                this.notes[fNote].class += " " + this.scale.degrees[index].name.toLowerCase();
-                this.notes[fNote].visible = true;
+                this.data.notes[fNote].class += " " + this.scale.degrees[index].name.toLowerCase();
+                this.data.notes[fNote].visible = true;
             }
         },
 
@@ -348,7 +205,7 @@ export default {
             else if (fretIndex == 1) {
                 result += " border-l-0";
             }
-            else if (fretIndex == this.frets - 1) {
+            else if (fretIndex == this.data.frets - 1) {
                 result += " border-r-0 w-1/2";
             }
 
@@ -362,7 +219,7 @@ export default {
         defaultLayout() {
             const degree = "w-14 bg-neutral-800 text-neutral-100 rounded shadow py-4 text-lg lg:text-xl lg:py-6 lg:w-20";
 
-            var notes = this.notes;
+            var notes = this.data.notes;
             for (let i = 0; i < notes.length; i++) {
                 notes[i].class = `note ${notes[i].name}`;
                 notes[i].visible = false;

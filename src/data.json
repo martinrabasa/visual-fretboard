@@ -1,0 +1,148 @@
+{
+  "frets": 17,
+  "strings": 6,
+  "stringNotes": [4, 11, 7, 2, 9, 4],
+  "scales": [
+    {
+      "name": "Major",
+      "pattern": [2, 2, 1, 2, 2, 2]
+    },
+    {
+      "name": "Dorian",
+      "pattern": [2, 1, 2, 2, 2, 1]
+    },
+    {
+      "name": "Prygian",
+      "pattern": [1, 2, 2, 2, 1, 2]
+    },
+    {
+      "name": "Lydian",
+      "pattern": [2, 2, 2, 1, 2, 2]
+    },
+    {
+      "name": "Mixolydian",
+      "pattern": [2, 2, 1, 2, 2, 1]
+    },
+    {
+      "name": "Minor",
+      "pattern": [2, 1, 2, 2, 1, 2]
+    },
+    {
+      "name": "Locrian",
+      "pattern": [1, 2, 2, 1, 2, 2]
+    }
+  ],
+  "notes": [
+    {
+      "name": "C",
+      "class": "note C",
+      "visible": false
+    },
+    {
+      "name": "C♯",
+      "class": "note C♯",
+      "visible": false
+    },
+    {
+      "name": "D",
+      "class": "note D",
+      "visible": false
+    },
+    {
+      "name": "D♯",
+      "class": "note D♯",
+      "visible": false
+    },
+    {
+      "name": "E",
+      "class": "note E",
+      "visible": false
+    },
+    {
+      "name": "F",
+      "class": "note F",
+      "visible": false
+    },
+    {
+      "name": "F♯",
+      "class": "note F♯",
+      "visible": false
+    },
+    {
+      "name": "G",
+      "class": "note G",
+      "visible": false
+    },
+    {
+      "name": "G♯",
+      "class": "note G♯",
+      "visible": false
+    },
+    {
+      "name": "A",
+      "class": "note A",
+      "visible": false
+    },
+    {
+      "name": "A♯",
+      "class": "note A♯",
+      "visible": false
+    },
+    {
+      "name": "B",
+      "class": "note B",
+      "visible": false
+    }
+  ],
+  "degrees": [
+    {
+      "id": 0,
+      "symbol": "I",
+      "name": "Tonic",
+      "note": null,
+      "class": "degree"
+    },
+    {
+      "id": 1,
+      "symbol": "II",
+      "name": "Supertonic",
+      "note": null,
+      "class": "degree"
+    },
+    {
+      "id": 2,
+      "symbol": "III",
+      "name": "Mediant",
+      "note": null,
+      "class": "degree"
+    },
+    {
+      "id": 3,
+      "symbol": "IV",
+      "name": "Subdominant",
+      "note": null,
+      "class": "degree"
+    },
+    {
+      "id": 4,
+      "symbol": "V",
+      "name": "Dominant",
+      "note": null,
+      "class": "degree"
+    },
+    {
+      "id": 5,
+      "symbol": "VI",
+      "name": "Submediant",
+      "note": null,
+      "class": "degree"
+    },
+    {
+      "id": 6,
+      "symbol": "VII",
+      "name": "Leading",
+      "note": null,
+      "class": "degree"
+    }
+  ]
+}
